@@ -63,10 +63,10 @@ function showMainDiag(matrix) {
 function showSideDiag(matrix) {
   console.log(`\nShow side diagonal:`);
 
-  let leng = matrix.length;
+  let length = matrix.length;
 
   for (let i = 0; i < matrix.length; i++) {
-    console.log(matrix[i][leng - 1 - i]);
+    console.log(matrix[i][length - 1 - i]);
   }
 }
 function showBottomTriangle(matrix) {
@@ -98,11 +98,11 @@ function rotateMatrix(matrix) {
 function rotateMatrixClockwise(matrix) {
   console.log(`\nRotate the matrix clockwise:`);
   let final = [];
-  for (let i = 0; i < matrix[0].length; i++) {
+  for (let columnIndex = 0; columnIndex < matrix[0].length; columnIndex++) {
     let result = [];
-    for (let j = 0; j < matrix.length; j++) {
-      let currentColumn = matrix.length - 1 - j;
-      result.push(matrix[currentColumn][i]);
+    for (let rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
+      let currentRow = matrix.length - 1 - rowIndex;
+      result.push(matrix[currentRow][columnIndex]);
     }
     final.push(result);
   }
@@ -119,16 +119,11 @@ function createMatrix(number) {
     while (subMatrix.length < number) {
       subMatrix.push(0);
     }
-
     matrix.push(subMatrix);
-
-    for (let j = 0; j < matrix.length; j++) {
-      if (matrix[j][j] === 0) {
-        matrix[j][j] = 1;
-      }
-    }
   }
-  // console.log(matrix);
+  for (let j = 0; j < matrix.length; j++) {
+    matrix[j][j] = "MATRIX";
+  }
   return matrix;
 }
 
@@ -164,4 +159,4 @@ let array = [
 // showMatrix(createMatrix(10));
 // showMatrix(rotateMatrix(createMatrix(10)));
 // showMatrix(rotateMatrixClockwise(createMatrix(10)));
-// showMatrix(rotateMatrixClockwise(rotateMatrixClockwise(createMatrix(10))));
+// showMatrix(rotateMatrixClockwise(rotateMatrixClockwise(createMatrix(20))));
